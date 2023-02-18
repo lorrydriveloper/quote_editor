@@ -4,6 +4,12 @@
   padding-left: var(--space-xs);
   margin-left: auto;
   margin-right: auto;
+  &__centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
 
   @include media(tabletAndUp) {
     padding-right: var(--space-m);
