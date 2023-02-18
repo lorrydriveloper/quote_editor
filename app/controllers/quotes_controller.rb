@@ -4,7 +4,7 @@ class QuotesController < ApplicationController
   before_action :set_quote, except: %i[index new create]
 
   def index
-    @quotes = Quote.all
+    @quotes = Quote.ordered
   end
 
   def show; end
@@ -18,7 +18,11 @@ class QuotesController < ApplicationController
   def create
     @quote = Quote.new(quotes_params)
     if @quote.save
-      redirect_to quotes_path, notice: 'Quote successfully created'
+      respond_to do |format|
+        format.html {  redirect_to quotes_path, notice: 'Quote successfully created' }
+        format.turbo_stream
+      end
+
     else
       render :new
     end
@@ -34,7 +38,10 @@ class QuotesController < ApplicationController
 
   def destroy
     @quote.destroy
-    redirect_to quotes_path, notice: 'Quote was successfully destroyed.'
+    respond_to do |format|
+      format.html { redirect_to quotes_path, notice: 'Quote was successfully destroyed.' }
+      format.turbo_stream
+    end
   end
 
   private
@@ -44,6 +51,6 @@ class QuotesController < ApplicationController
   end
 
   def quotes_params
-    params.require(:quotes).permit(:name)
+    params.require(:quote).permit(:name)
   end
 end

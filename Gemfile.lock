@@ -163,6 +163,7 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rake (13.0.6)
+    redis (4.8.1)
     regexp_parser (2.6.2)
     reline (0.3.2)
       io-console (~> 0.5)
@@ -211,6 +212,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-21
+  arm64-darwin-22
 
 DEPENDENCIES
   bootsnap
@@ -222,6 +224,7 @@ DEPENDENCIES
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.2)
+  redis (~> 4.0)
   selenium-webdriver
   simple_form (~> 5.1.0)
   sprockets-rails
@@ -232,7 +235,7 @@ DEPENDENCIES
   webdrivers
 
 RUBY VERSION
-   ruby 3.1.2p20
+   ruby 3.2.0p0
 
 BUNDLED WITH
    2.3.24
