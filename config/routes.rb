@@ -2,6 +2,6 @@
 
 Rails.application.routes.draw do
   devise_for :users
-  root 'quotes#index'
+  root to: 'pages#home'
   resources :quotes
 end
