@@ -4,7 +4,7 @@ class QuotesController < ApplicationController
   before_action :set_quote, except: %i[index new create]
 
   def index
-    @quotes = Quote.ordered
+    @quotes = current_company.quotes.ordered
   end
 
   def show; end
@@ -16,7 +16,7 @@ class QuotesController < ApplicationController
   def edit; end
 
   def create
-    @quote = Quote.new(quotes_params)
+    @quote = current_company.quotes.build(quotes_params)
     if @quote.save
       respond_to do |format|
         format.html {  redirect_to quotes_path, notice: 'Quote successfully created' }
@@ -47,7 +47,7 @@ class QuotesController < ApplicationController
   private
 
   def set_quote
-    @quote = Quote.find(params[:id])
+    @quote = current_company.quotes.find(params[:id])
   end
 
   def quotes_params

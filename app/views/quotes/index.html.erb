@@ -1,4 +1,4 @@
-<%= turbo_stream_from 'quotes' %>
+<%= turbo_stream_from [current_company, 'quotes'] %>
 <main class="container">
   <%= turbo_frame_tag "first_turbo_frame" do %>
     <div class="header">
