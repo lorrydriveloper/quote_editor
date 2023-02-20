@@ -2,3 +2,4 @@
   <%= render @quote %>
 <% end %>
 <%= turbo_stream.update "new_quote", ''  %>
+<%= render_turbo_stream_flash_messages %>

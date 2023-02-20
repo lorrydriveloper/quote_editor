@@ -19,8 +19,8 @@ class QuotesController < ApplicationController
     @quote = current_company.quotes.build(quotes_params)
     if @quote.save
       respond_to do |format|
-        format.html {  redirect_to quotes_path, notice: 'Quote successfully created' }
-        format.turbo_stream
+        format.html {  redirect_to quotes_path, notice: 'Quote was successfully created.' }
+        format.turbo_stream { flash.now[:notice] = 'Quote was successfully created.' }
       end
 
     else
@@ -30,7 +30,10 @@ class QuotesController < ApplicationController
 
   def update
     if @quote.update(quotes_params)
-      redirect_to quotes_path, notice: 'Quote successfully created'
+      respond_to do |format|
+        format.html {  redirect_to quotes_path, notice: 'Quote was successfully updated.' }
+        format.turbo_stream { flash.now[:info] = 'Quote was successfully updated.' }
+      end
     else
       render :edit
     end
@@ -40,7 +43,7 @@ class QuotesController < ApplicationController
     @quote.destroy
     respond_to do |format|
       format.html { redirect_to quotes_path, notice: 'Quote was successfully destroyed.' }
-      format.turbo_stream
+      format.turbo_stream { flash.now[:success] = 'Quote was successfully destroyed.' }
     end
   end
 
