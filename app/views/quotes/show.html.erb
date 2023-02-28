@@ -4,5 +4,12 @@
     <h1>
       <%= @quote.name %>
     </h1>
+    <%= link_to "New Date", new_quote_line_item_date_path(@quote), class: 'btn btn--primary',data: {turbo_frame: 'new_line_item_date'} %>
   </div>
+  <%= turbo_stream_from [@quote, 'line_item_dates'] %>
+  <%= turbo_frame_tag 'new_line_item_date'%>
+  <%= turbo_frame_tag 'line_item_dates' do %>
+    <%= render 'line_item_dates/empty_state' %>
+    <%= render @line_item_dates, quote: @quote %>
+  <% end %>
 </main>
