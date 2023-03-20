@@ -1,4 +1,4 @@
 redis: redis-server --port 6379
-web: unset PORT && bin/rails server
+web: unset PORT && bundle exec rdbg -n --open=vscode -c --sock-path=tmp/sockets/ruby-debug -- bin/rails server
 js: yarn build --watch
 css: yarn build:css --watch
