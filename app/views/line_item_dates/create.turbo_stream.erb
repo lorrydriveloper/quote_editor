@@ -1,5 +1,3 @@
-<%= turbo_stream.prepend "line_item_dates" do %>
-  <%= render @line_item_date, quote: @quote %>
-<% end %>
+
 <%= turbo_stream.update "new_line_item_date", ''  %>
 <%= render_turbo_stream_flash_messages %>
