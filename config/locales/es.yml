@@ -1,0 +1,4 @@
+es:
+  created: 'fue creado exitosamente.'
+  updated: 'fue actualizado exitosamente.'
+  destroyed: 'fue destruido exitosamente.'

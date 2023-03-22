@@ -5,5 +5,5 @@
   "rdbgPath": "/Users/pedrolopez/.gem/ruby/3.2.0/gems/debug-1.7.1/exe/rdbg",
   "debugPort": "tmp/sockets/ruby-debug",
   "localfs": true,
-  "autoAttach": "0.8585973820948472"
+  "autoAttach": "0.23686401029829185"
 }
