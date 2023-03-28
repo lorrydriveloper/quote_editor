@@ -6,6 +6,7 @@ class LineItemDate < ApplicationRecord
   after_destroy_commit -> { broadcast_remove_to [quote, 'line_item_dates'] }
   # broadcasts_to -> (line_item_date) { [line_item_date.quote, 'line_item_dates'] }, inserts_by: :prepend
   belongs_to :quote
+  has_many :line_items, dependent: :destroy
 
   validates :date, presence: true, uniqueness: { scope: :quote_id }
 
