@@ -15,5 +15,15 @@
   </body>
   <% if Rails.env.development? %>
     <%= console  %>
+    <script>
+    document.addEventListener("turbo:frame-missing", (event) => {
+      const { detail: { response, visit } } = event;
+      if (response.status == 500) {
+        console.log(response, visit)
+        event.preventDefault();
+        visit(response.url);
+      }
+    });
+    </script>
   <% end %>
 </html>
