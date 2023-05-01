@@ -10,6 +10,11 @@ class Quote < ApplicationRecord
 
   belongs_to :company
   has_many :line_item_dates, dependent: :destroy
+  has_many :line_items, through: :line_item_dates
 
   validates :name, presence: true
+
+  def total_price
+    line_items.sum(&:total_price)
+  end
 end

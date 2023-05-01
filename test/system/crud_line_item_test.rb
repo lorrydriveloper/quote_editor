@@ -3,6 +3,7 @@
 require 'application_system_test_case'
 
 class CrudLineItemTest < ApplicationSystemTestCase
+  include ActionView::Helpers::NumberHelper
   setup do
     login_as users(:accountant)
     @quote          = quotes(:first)
@@ -28,7 +29,8 @@ class CrudLineItemTest < ApplicationSystemTestCase
     assert_text 'Line Item One'
     assert_text 'A cosy meeting room for 10 people'
     assert_text '1'
-    assert_text '$1,000.00'
+    assert_text number_to_currency(1000.00)
+    assert_text number_to_currency(@quote.total_price)
   end
 
   test 'Updating a Line Item' do
@@ -42,6 +44,7 @@ class CrudLineItemTest < ApplicationSystemTestCase
     click_on 'Update Line item'
     assert_text 'New item name'
     assert_text '2'
+    assert_text number_to_currency(@quote.total_price)
   end
 
   test 'Destroy a Line Item' do
@@ -53,5 +56,6 @@ class CrudLineItemTest < ApplicationSystemTestCase
       assert_no_text 'Meeting room'
     end
     assert_selector 'h1', text: 'First quote'
+    assert_text number_to_currency(@quote.total_price)
   end
 end

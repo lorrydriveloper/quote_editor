@@ -30,6 +30,11 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
+  number:
+    currency:
+      format:
+        format: '%u%n'
+        unit: '£'
   created: 'was successfully created.'
   updated: 'was successfully updated.'
   destroyed: 'was successfully destroyed.'
