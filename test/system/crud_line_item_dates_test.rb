@@ -2,7 +2,7 @@
 
 require 'application_system_test_case'
 
-class LineItemsTest < ApplicationSystemTestCase
+class CrudLineItemDatesTest < ApplicationSystemTestCase
   setup do
     login_as users(:accountant)
     @quote = quotes(:second)
@@ -10,14 +10,14 @@ class LineItemsTest < ApplicationSystemTestCase
     visit quote_path(@quote)
   end
 
-  test 'Create a New Line Item' do
-    create_new_item(DateTime.current)
+  test 'Create a New Line Item Date' do
+    create_new_item_date(DateTime.current)
     assert_selector 'h1', text: @quote.name
     assert_text I18n.l(@quote.line_item_dates.last.date, format: :long)
   end
 
-  test 'Updating a Line Item' do
-    create_new_item(DateTime.current)
+  test 'Updating a Line Item Date' do
+    create_new_item_date(DateTime.current)
     assert_selector 'h1', text: @quote.name
     assert_text I18n.l(@quote.line_item_dates.last.date, format: :long)
     target = @quote.line_item_dates.first
@@ -33,8 +33,8 @@ class LineItemsTest < ApplicationSystemTestCase
     assert_text I18n.l(Date.current + 1.day, format: :long)
   end
 
-  test 'Destroy a Line Item' do
-    create_new_item(DateTime.current)
+  test 'Destroy a Line Item Date' do
+    create_new_item_date(DateTime.current)
     sleep 0.5
     target = @quote.line_item_dates.last
     assert_selector 'h1', text: @quote.name
@@ -48,8 +48,8 @@ class LineItemsTest < ApplicationSystemTestCase
   end
 
   test 'Add new item after prev date' do
-    create_new_item(DateTime.current)
-    create_new_item(DateTime.current + 1.day)
+    create_new_item_date(DateTime.current)
+    create_new_item_date(DateTime.current + 1.day)
 
     assert_selector 'h1', text: @quote.name
     element = page.find("#line_item_date_#{@quote.line_item_dates.last.prev_date.to_param}")
@@ -57,9 +57,9 @@ class LineItemsTest < ApplicationSystemTestCase
   end
 
   test 'Add new item before prev date' do
-    create_new_item(DateTime.current + 1.day)
-    create_new_item(DateTime.current)
-    create_new_item(DateTime.current + 2.days)
+    create_new_item_date(DateTime.current + 1.day)
+    create_new_item_date(DateTime.current)
+    create_new_item_date(DateTime.current + 2.days)
 
     assert_selector 'h1', text: @quote.name
     target_el = @quote.line_item_dates.where(date: DateTime.current + 1.day).first
@@ -69,7 +69,7 @@ class LineItemsTest < ApplicationSystemTestCase
 
   private
 
-  def create_new_item(date)
+  def create_new_item_date(date)
     click_on 'New Date'
     fill_in 'line_item_date_date', with: date
 
