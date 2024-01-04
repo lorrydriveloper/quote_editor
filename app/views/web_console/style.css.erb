@@ -1,0 +1,189 @@
+
+#web-console .pos-absolute {
+  position: absolute;
+}
+
+#web-console .pos-fixed {
+  position: fixed;
+}
+
+#web-console .pos-right {
+  right: 0;
+}
+
+#web-console .border-box {
+  box-sizing: border-box;
+}
+
+#web-console .layer {
+  width: 100%;
+  height: 100%;
+}
+
+#web-console .layer.console-outer {
+  z-index: 1;
+}
+
+#web-console .layer.resizer {
+  z-index: 2;
+}
+
+#web-console {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 148px;
+  padding: 0;
+  margin: 0;
+  background: none repeat scroll 0% 0% #333;
+  z-index: 9999;
+}
+
+
+#web-console.console-minimized .console-outer .console-inner {
+  display: none;
+}
+
+#web-console .console-outer {
+  overflow: auto;
+  padding-top: 4px;
+}
+
+#web-console .console-inner {
+  font-family: monospace;
+  font-size: 11px;
+  width: 100%;
+  height: 100%;
+  overflow: unset;
+  background: #333;
+}
+
+
+
+#web-console .console-prompt-box {
+  color: #fff;
+}
+
+#web-console .console-message {
+  color: #1ad027;
+  margin: 0;
+  border: 0;
+  white-space: pre-wrap;
+  background-color: #333;
+  padding: 0;
+}
+
+#web-console .console-message.error-message {
+  color: #fc9;
+}
+
+#web-console .console-message.notification-message {
+  color: #99f;
+}
+
+#web-console .console-message.auto-complete {
+  word-break: break-all;
+}
+
+#web-console .console-message.auto-complete .keyword {
+  margin-right: 11px;
+}
+
+#web-console .console-message.auto-complete .keyword.selected {
+  background: #fff;
+  color: #000;
+}
+
+#web-console .console-message.auto-complete .hidden {
+  display: none;
+}
+
+#web-console .console-message.auto-complete .trimmed {
+  display: none;
+}
+
+#web-console .console-hint {
+  color: #096;
+}
+
+#web-console .console-focus .console-cursor {
+  background: #fefefe;
+  color: #333;
+  font-weight: bold;
+}
+
+#web-console .resizer {
+  background: #333;
+  width: 100%;
+  height: 4px;
+  cursor: ns-resize;
+}
+
+#web-console .console-actions {
+  display: flex;
+  gap: 3px;
+  padding-right: 3px;
+}
+
+
+#web-console .button {
+  cursor: pointer;
+  border-radius: 1px;
+  font-family: monospace;
+  font-size: 13px;
+  width: 14px;
+  height: 14px;
+  line-height: 14px;
+  text-align: center;
+  color: #ccc;
+}
+
+#web-console .button:hover {
+  background: #666;
+  color: #fff;
+}
+
+#web-console .button.close-button:hover {
+  background: #966;
+}
+
+#web-console .clipboard {
+  height: 0px;
+  padding: 0px;
+  margin: 0px;
+  width: 0px;
+  margin-left: -1000px;
+}
+
+#web-console .console-prompt-label {
+  display: inline;
+  color: #fff;
+  background: none repeat scroll 0% 0% #333;
+  border: 0;
+  padding: 0;
+}
+
+#web-console .console-prompt-display {
+  display: inline;
+  color: #fff;
+  background: none repeat scroll 0% 0% #333;
+  border: 0;
+  padding: 0;
+}
+
+#web-console.full-screen {
+  height: 100%;
+}
+
+#web-console.full-screen .console-outer {
+  padding-top: 3px;
+}
+
+#web-console.full-screen .resizer {
+  display: none;
+}
+
+#web-console.full-screen .close-button {
+  display: none;
+}
